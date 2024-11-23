@@ -7,16 +7,27 @@ class Calculator:
 
     def multiply(self, a, b):
         result = 0
-        for i in range(b):
+        for i in range(abs(b)):
             result = self.add(result, a)
-        return result
+
+        if (a >= 0 and b >= 0):
+            return result
+        else:
+            return -result
 
     def divide(self, a, b):
+        absA = abs(a)
+        absB = abs(b)
+
         result = 0
-        while a >= b:
-            a = self.subtract(a, b)
+        while absA >= absB:
+            absA = self.subtract(absA, absB)
             result += 1
-        return result
+        
+        if (a >= 0 and b >= 0) or (a < 0 and b < 0):
+            return result
+        else:
+            return -result
     
     def modulo(self, a, b):
         while a >= b:
